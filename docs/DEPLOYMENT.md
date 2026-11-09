@@ -6,7 +6,7 @@ Repository: [MTomachi/Portfolio](https://github.com/MTomachi/Portfolio), branch 
 
 Environment variables `SITE_URL` and `BASE_PATH` override these defaults for checks or a later domain. Page/asset links use a single helper, so content paths never contain the repository prefix.
 
-The local checkout is connected to this repository. No source has been pushed and no release has been deployed by this work. The connected GitHub tools cannot administer Pages settings or dispatch a workflow; no claim is made that the remote Pages source has been changed.
+The local checkout is connected to this repository. The approved draft source was uploaded in commit `969d0f070b37e3e3c4e67b8b6b7aae3dda8d6758`. Deployment has not been verified; current progress is in [RELEASE_STATUS.md](RELEASE_STATUS.md). The connected GitHub tools cannot administer Pages settings or dispatch a workflow; no claim is made that the remote Pages source has been changed.
 
 ## Before the first approved release
 

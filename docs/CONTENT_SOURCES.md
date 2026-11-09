@@ -15,7 +15,7 @@ Latest clarifications:
 ## Public profile and repositories
 
 - [Profile README](https://github.com/MTomachi/MTomachi/blob/b4004b0a010c0cb77f689362dea07246fa5fd428/README.md): GitHub handle and published email `davidmax962@gmail.com`. Other profile claims, such as client work or SQL proficiency, were not adopted without supporting evidence.
-- [Portfolio repository](https://github.com/MTomachi/Portfolio): supplied by the user and verified to exist with `main` and a README. Local Git points to that origin. No source push, Pages configuration change or deployment has been performed by this work.
+- [Portfolio repository](https://github.com/MTomachi/Portfolio): supplied by the user and verified to exist with `main` and a README. Local Git points to that origin. The reviewed draft was uploaded after explicit release approval in commit `969d0f070b37e3e3c4e67b8b6b7aae3dda8d6758`. No Pages settings change or successful deployment is claimed; see RELEASE_STATUS.md.
 - [Music repository](https://github.com/MTomachi/music-listening-dashboard): empty when checked. No source/demo link is presented as if it contains an implementation.
 
 ## To-do application

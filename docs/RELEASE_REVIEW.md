@@ -45,6 +45,6 @@ Open the printed `/Portfolio/` URL. Inspect the homepage, all three case studies
 
 ## Approval and remaining release steps
 
-David has explicitly approved this reviewed draft. The connected tools cannot administer Pages settings or dispatch a workflow; the owner must select **Settings → Pages → Source: GitHub Actions** and use the manual release workflow once the approved source is uploaded. The assistant can then monitor checks, deployment logs and the resulting site.
+David has explicitly approved this reviewed draft, and its source is on main (`969d0f0`). GitHub's initial check failed before any jobs started with an internal server error. Its live status API reported an Actions outage; see [release status](RELEASE_STATUS.md). No remote test or deployment pass is claimed. The connected tools cannot administer Pages settings or dispatch a workflow; the owner must select **Settings → Pages → Source: GitHub Actions** and use the manual release workflow once the approved source is uploaded. The assistant can then monitor checks, deployment logs and the resulting site.
 
 After approval, upload the reviewed source, run checks and the manual deployment workflow, and verify its returned public URL plus direct project links. Phase 5 is not complete until that public verification succeeds. Domain purchases and paid services are not authorized.

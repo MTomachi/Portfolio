@@ -4,7 +4,7 @@
 
 Release update: David explicitly approved publishing the reviewed draft on November 9. Source upload and deployment of that candidate are authorized; deployment success remains to be verified. The connector can upload files and read runs but cannot administer Pages or dispatch its first workflow. Domain purchases and paid services remain unapproved.
 
-The user approved `docs/APPROVED_MVP.md`, reviewed Phase 1, then supplied `MTomachi/Portfolio` and authorized the remaining development phases. Required checks AND separate release approval are mandatory before deployment. Domain purchases and paid services remain unapproved. No remote files/settings have been changed and nothing has been published.
+The user approved `docs/APPROVED_MVP.md`, reviewed Phase 1, then supplied `MTomachi/Portfolio` and authorized the remaining development phases. Required checks AND separate release approval are mandatory before deployment. Domain purchases and paid services remain unapproved. The reviewed source has now been uploaded after release approval; no successful website deployment is claimed. See RELEASE_STATUS.md.
 
 ## Revised Phase 1 — Content preparation
 
@@ -47,6 +47,12 @@ Completed local GitHub Pages configuration, root-path override checks, editing/d
 Final prefix verification: zero diagnostics, 16 content tests, 30 browser checks, five pages and 100 valid local references. The root-path variant also passed its build, 30 browser checks and 100 local references. Workflow YAML parsed and its default-false manual approval guard passed inspection. `docs/RELEASE_REVIEW.md` records exact limits and handoff instructions. Release archives are generated locally in ignored `artifacts/` for review; they are not deployed.
 
 Pending: explicit owner release approval, source upload, remote Pages source selection/workflow execution, and public URL verification. Remote CI/browser/Pages success is not claimed. The original CSV source/data/outputs were not changed. No paid services or domain purchase were used.
+
+## Approved source upload — November 9, 2026
+
+Uploaded all 46 reviewed source files atomically to main in `969d0f070b37e3e3c4e67b8b6b7aae3dda8d6758`, preserving the repository's initial commit. Uploaded blob hashes match the local files. No application code changed from the reviewed candidate; only approval/status documentation was updated.
+
+The automatic Check portfolio run `42673917267` failed before any jobs started. Its annotation reports an internal server error (correlation f9581592-4c7e-4a30-9d49-60192e64907e); GitHub refused the failed-job retry with HTTP 403. The owner reported starting the publishing workflow, but no workflow_dispatch run was visible in subsequent API reads. GitHub's live summary API reported a major Actions outage and an investigating Actions and Checks API incident. This is an external service blocker, not a reported application-test failure. Current progress and resumption instructions are in RELEASE_STATUS.md.
 
 ## Historical work under the earlier plan
 

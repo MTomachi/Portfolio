@@ -1,10 +1,10 @@
 # David Maxwell — portfolio
 
-A local release candidate for a Mount Royal University student moving from Computer Science toward Data Science. Built with Astro, TypeScript, plain CSS and a small preferences script. Core content works without JavaScript.
+An approved draft portfolio for a Mount Royal University student moving from Computer Science toward Data Science. Built with Astro, TypeScript, plain CSS and a small preferences script. Core content works without JavaScript.
 
 **Repository:** https://github.com/MTomachi/Portfolio  
-**Intended Pages URL:** https://mtomachi.github.io/Portfolio/ — not deployed by this work.  
-**Release gate:** all checks must pass and David must approve the release before publication. The deployment workflow is manual-only and defaults to approval=false.
+**Intended Pages URL:** https://mtomachi.github.io/Portfolio/ — deployment pending; see [release status](docs/RELEASE_STATUS.md).  
+**Release gate:** David approved the reviewed draft on November 9, 2026, and its source is on `main`. Remote checks/deployment are waiting on GitHub Actions recovery. Future releases still need approval. The deployment workflow remains manual-only and defaults to approval=false.
 
 ## Run
 
