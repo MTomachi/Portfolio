@@ -1,0 +1,53 @@
+---
+import type { Project } from '../lib/validate-content';
+import { resourcePath } from '../lib/paths';
+interface Props { project: Project; compact?: boolean; }
+const { project, compact = false } = Astro.props;
+const output = project.caseStudy.demonstration.output;
+---
+<figure class:list={['project-preview', { compact }]}>
+  {project.image ? (
+    <div class="preview-stage image-stage">
+      <img src={resourcePath(project.image)} alt={`${project.title} project screenshot`} loading="lazy" decoding="async" width="1064" height="1328" />
+    </div>
+  ) : output ? (
+    <div class="preview-stage report-stage">
+      <div class="report-preview">
+        <p class="preview-label">Actual project output</p>
+        <pre aria-label="Saved report preview">{output.content}</pre>
+      </div>
+    </div>
+  ) : (
+    <div class="preview-stage unavailable-stage">
+      <div class="unavailable-preview">
+        <span class="preview-symbol" aria-hidden="true">↳</span>
+        <p class="preview-label">{project.status === 'unfinished' ? 'Unfinished project' : 'Project evidence'}</p>
+        <p class="unavailable-title">{project.status === 'unfinished' ? 'Original files unavailable.' : 'Preview not yet supplied.'}</p>
+        <p class="unavailable-note">{project.caseStudy.demonstration.description}</p>
+      </div>
+    </div>
+  )}
+  <figcaption class="preview-caption">
+    {project.image ? 'Original screenshot · from the project README' : output ? `Actual saved report${project.dataKind === 'synthetic' ? ' · generated data' : ''}` : 'No screenshot or working demonstration available'}
+  </figcaption>
+</figure>
+<style>
+  .project-preview { min-width: 0; width: 100%; margin: 0; }
+  .preview-stage { display: grid; place-items: center; width: 100%; min-width: 0; min-height: 340px; aspect-ratio: 1.4; padding: 2rem; border-radius: .8rem; }
+  .preview-caption { margin-top: .7rem; font-size: .75rem; color: var(--muted); line-height: 1.6; }
+  .image-stage { background: var(--panel); border: 1px solid var(--line); }
+  .image-stage img { width: 100%; height: 360px; max-width: 100%; object-fit: contain; }
+  .report-stage { background: var(--highlight); }
+  .report-preview { width: 100%; max-width: 440px; padding: 1.6rem; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: .5rem; }
+  .preview-label { font-size: .65rem; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  pre { font: .8rem/1.8 ui-monospace, SFMono-Regular, Consolas, monospace; margin: 1rem 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .unavailable-stage { background: var(--panel); border: 1px solid var(--line); }
+  .unavailable-preview { max-width: 410px; }
+  .preview-symbol { display: block; font-size: 3rem; color: var(--accent); margin-bottom: 1.4rem; line-height: 1; }
+  .unavailable-title { font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15; letter-spacing: -.045em; margin-top: 1rem; }
+  .unavailable-note { font-size: .85rem; color: var(--muted); margin-top: 1rem; }
+  .compact .preview-stage { min-height: 300px; }
+  .compact .image-stage img { height: 320px; }
+  @media (max-width: 1000px) { .preview-stage { padding: 1.4rem; aspect-ratio: auto; } .report-preview { padding: 1rem; } pre { font-size: .75rem; } }
+  @media (max-width: 400px) { .preview-stage { min-height: 280px; padding: 1rem; } .image-stage img { height: 300px; } .unavailable-title { font-size: 1.9rem; } .report-preview { padding: .85rem; } pre { font-size: .7rem; } }
+</style>

@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { portfolio } from '../lib/validate-content';
+import { resourcePath, sitePath } from '../lib/paths';
+import ProjectReel from '../components/ProjectReel.astro';
+---
+<BaseLayout title={`${portfolio.profile.name} — Student data portfolio`}>
+  <div class="shell">
+    <section class="hero" aria-labelledby="intro-title">
+      <div class="hero-main">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>{portfolio.profile.role}</p>
+        <h1 id="intro-title">{portfolio.profile.name}</h1>
+        <p class="hero-description">{portfolio.profile.description}</p>
+        <p class="hero-career">{portfolio.profile.availability}</p>
+        <a class="hero-link" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a>
+      </div>
+      <aside class="hero-aside" aria-label="Current focus">
+        <div class="orbit-mark" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
+        <p class="eyebrow">Currently exploring</p>
+        <p>Code, patterns,<br />and the questions<br />between them.</p>
+        <span class="aside-rule" aria-hidden="true"></span>
+        <p class="aside-note">Computer science<br /><span aria-hidden="true">↳ </span>toward data science</p>
+      </aside>
+    </section>
+    <section id="projects" class="projects-section" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Software development and data analysis</p>
+          <h2 id="projects-title">Featured projects<span class="count">({String(portfolio.projects.length).padStart(2, '0')})</span></h2>
+        </div>
+        <p>Small projects.<br />Practical questions.</p>
+      </div>
+      <ProjectReel projects={portfolio.projects} />
+    </section>
+    <section class="section skills-section" id="skills" aria-labelledby="skills-title">
+      <div class="skills-heading">
+        <p class="eyebrow">Tools with project evidence</p>
+        <h2 id="skills-title">Technical skills</h2>
+        <p class="muted">Examples from my projects, with links to the supporting work.</p>
+      </div>
+      <div class="skills-grid">
+        {portfolio.skills.map((group, groupIndex) => (
+          <article class="skill-group" aria-labelledby={`skill-group-${groupIndex}`}>
+            <h3 id={`skill-group-${groupIndex}`}>{group.category}</h3>
+            <ul class="skills-list">
+              {group.items.map(skill => (
+                <li>
+                  <h4>{skill.name}</h4>
+                  <p>{skill.description}</p>
+                  <div class="skill-evidence">
+                    <span class="sr-only">{skill.name} project evidence:</span>
+                    {skill.projectSlugs.map(slug => {
+                      const project = portfolio.projects.find(item => item.slug === slug);
+                      return project && <a href={sitePath(`projects/${project.slug}/`)}>{project.title}<span aria-hidden="true"> ↗</span></a>;
+                    })}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div><p class="eyebrow">Education and direction</p><h2 id="about-title">About me</h2></div>
+      <div class="about-copy">
+        <div class="prose">{portfolio.profile.about.map(text => <p>{text}</p>)}</div>
+        <div class="learning-note"><span aria-hidden="true">↳</span><p>One year of computer science.<br />A growing interest in what data can tell us.</p></div>
+      </div>
+    </section>
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="eyebrow">Have a question or an opportunity?</p>
+        <h2 id="contact-title">Let’s talk<span aria-hidden="true"> ↗</span></h2>
+        <p class="contact-note">Open to conversations about learning,<br />projects, and the next step.</p>
+      </div>
+      <div class="contact-links">
+        {portfolio.contact.email ? <a href={`mailto:${portfolio.contact.email}`}><span>Email me</span><span aria-hidden="true">↗</span></a> : <p class="muted">Contact email not yet provided.</p>}
+        {portfolio.contact.github && <a href={portfolio.contact.github}><span>GitHub profile</span><span aria-hidden="true">↗</span></a>}
+        {portfolio.contact.resume ? <a href={resourcePath(portfolio.contact.resume)}><span>View résumé (PDF)</span><span aria-hidden="true">↗</span></a> : <p class="resume-pending"><span>Résumé</span><span>Coming soon</span></p>}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero-career { max-width: 520px; margin-top: 1rem; color: var(--muted); font-size: .9rem; }
+  .skills-heading { max-width: 700px; }
+  .skills-heading h2 { font-weight: 500; margin-bottom: 1rem; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 2rem; margin-top: 2.5rem; }
+  .skill-group { min-width: 0; border-top: 1px solid var(--line); padding-top: 1.4rem; }
+  .skill-group h3 { font-size: 1.1rem; line-height: 1.35; letter-spacing: -.02em; }
+  .skills-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+  .skills-list li + li { margin-top: 1.5rem; }
+  .skills-list h4 { font-size: .95rem; line-height: 1.4; margin: 0 0 .35rem; }
+  .skills-list p { color: var(--muted); font-size: .85rem; overflow-wrap: anywhere; }
+  .skill-evidence { display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin-top: .6rem; font-size: .8rem; }
+</style>

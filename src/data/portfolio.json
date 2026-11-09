@@ -1,0 +1,249 @@
+{
+  "profile": {
+    "name": "David Maxwell",
+    "nameIsPlaceholder": false,
+    "role": "Mount Royal University student — software development and data analysis",
+    "description": "I’m David Maxwell, a Mount Royal University student moving from Computer Science toward Data Science. I’m learning Python and building projects in desktop applications and data analysis.",
+    "about": [
+      "I am a Mount Royal University student exploring the transition from computer science to data science.",
+      "I am learning Python through coursework and practical projects. My work includes a C++/Qt desktop application and a Python/pandas script for cleaning generated sales data. I check results against the input and document limitations alongside the output."
+    ],
+    "location": "Location to be added",
+    "availability": "Interested in internship, co-op and junior data opportunities."
+  },
+  "contact": {
+    "email": "davidmax962@gmail.com",
+    "github": "https://github.com/MTomachi",
+    "resume": null
+  },
+  "skills": [
+    {
+      "category": "Programming",
+      "items": [
+        {
+          "name": "C++17",
+          "description": "Task logic and desktop application development.",
+          "projectSlugs": [
+            "todo-list"
+          ]
+        },
+        {
+          "name": "Python · currently learning",
+          "description": "CSV processing and report generation, alongside university coursework.",
+          "projectSlugs": [
+            "csv-business-report"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Frameworks and tools",
+      "items": [
+        {
+          "name": "Qt Widgets & CMake",
+          "description": "A native desktop interface and its build configuration.",
+          "projectSlugs": [
+            "todo-list"
+          ]
+        },
+        {
+          "name": "pandas & pathlib",
+          "description": "Tabular data manipulation and readable file output.",
+          "projectSlugs": [
+            "csv-business-report"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Data handling",
+      "items": [
+        {
+          "name": "Cleaning & validation",
+          "description": "Normalize fields, remove duplicate rows, and check dates and numeric values.",
+          "projectSlugs": [
+            "csv-business-report"
+          ]
+        },
+        {
+          "name": "Aggregation & persistence",
+          "description": "Grouped sales summaries and local JSON task storage.",
+          "projectSlugs": [
+            "csv-business-report",
+            "todo-list"
+          ]
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "slug": "todo-list",
+      "title": "To-do List Application",
+      "summary": "A C++17 desktop application built with Qt Widgets and CMake. Its source implements adding, completing and deleting tasks, with local JSON storage between sessions.",
+      "category": "Desktop application",
+      "tools": [
+        "C++17",
+        "Qt Widgets",
+        "CMake"
+      ],
+      "status": "unconfirmed",
+      "contentDraft": true,
+      "dataKind": "not-applicable",
+      "preview": "tasks",
+      "image": "/images/todo-list.png",
+      "links": {
+        "github": "https://github.com/MTomachi/todo-qt",
+        "demo": null
+      },
+      "caseStudy": {
+        "overview": "A small desktop task manager with a text input, checkable task list, Add button and Delete Selected button.",
+        "question": "Practice combining C++ with a minimal desktop interface and immediate visual feedback when tasks are completed, as described in the project README.",
+        "approach": [
+          "Build a desktop interface with Qt Widgets and C++17, using CMake.",
+          "Add tasks with the Add button or Enter, ignoring blank entries.",
+          "Store tasks in tasks.json in the app's data directory and load them when the app starts."
+        ],
+        "codeExample": null,
+        "demonstration": {
+          "description": "The screenshot above is the original image published in the project README. It shows a checked task and the application controls. This portfolio review verified the source; it did not run the desktop app.",
+          "output": null
+        },
+        "results": [
+          "The source implements marking tasks complete with a strikethrough style and deleting selected tasks.",
+          "It saves the task list locally after changes and when the window is closed."
+        ],
+        "limitations": [
+          "These capabilities were checked in the public source; the application has not been run during this portfolio review.",
+          "Completion status, release packaging and cross-platform behavior have not been verified."
+        ],
+        "nextSteps": [
+          "Run the desktop app and document its setup, save/load behavior and known issues.",
+          "Confirm its completion status and release packaging."
+        ]
+      },
+      "charts": []
+    },
+    {
+      "slug": "music-listening-dashboard",
+      "title": "Music listening dashboard",
+      "summary": "An unfinished music-listening dashboard concept using synthetic data. The original code and dataset were lost; no working dashboard or analysis results are available.",
+      "category": "Data visualization",
+      "tools": [],
+      "status": "unfinished",
+      "contentDraft": true,
+      "dataKind": "synthetic",
+      "preview": "music",
+      "image": null,
+      "links": {
+        "github": null,
+        "demo": null
+      },
+      "caseStudy": {
+        "overview": "This project was an unfinished attempt to present synthetic music-listening records in a dashboard. The original code and dataset were lost during a previous setup.",
+        "question": "Explore how generated music-listening records could be presented in a dashboard. The original implementation was unfinished.",
+        "approach": [
+          "The original code and synthetic dataset were lost during a previous setup. Its implementation cannot currently be inspected."
+        ],
+        "codeExample": null,
+        "demonstration": {
+          "description": "No original screenshot, dataset, source code or working demo is available. This page documents the project status; it does not present a reconstructed dashboard.",
+          "output": null
+        },
+        "results": [
+          "No verified dashboard results or working demonstration are available."
+        ],
+        "limitations": [
+          "The original code, dataset, technologies and screenshots are unavailable. No completed functionality or findings are claimed."
+        ],
+        "nextSteps": [
+          "Any future rebuild would need its own implementation, generated dataset and documented analysis before results can be presented. A rebuild is outside this portfolio MVP."
+        ]
+      },
+      "charts": []
+    },
+    {
+      "slug": "csv-business-report",
+      "title": "CSV business report",
+      "summary": "A Python/pandas script for cleaning business CSV data and producing sales reports. The included synthetic dataset demonstrates its calculations; the tool remains in progress.",
+      "category": "Data analysis",
+      "tools": [
+        "Python",
+        "pandas",
+        "pathlib"
+      ],
+      "status": "in-progress",
+      "contentDraft": true,
+      "dataKind": "synthetic",
+      "preview": "report",
+      "image": null,
+      "links": {
+        "github": null,
+        "demo": null
+      },
+      "caseStudy": {
+        "overview": "A command-line script that reads sales records, cleans selected fields and writes a cleaned CSV plus a sales summary. It is intended as a reusable business-data cleaning tool and remains in progress.",
+        "question": "Create a reusable script that cleans business data and generates a readable sales report. The included generated sales records demonstrate its current behavior.",
+        "approach": [
+          "Use pandas to normalize column and product text and remove exact duplicate rows.",
+          "Convert dates, quantities and prices; stop for missing or unparseable dates, quantities or prices, nonpositive quantities or negative prices.",
+          "Calculate quantity × unit price for each row, aggregate revenue and units, and group revenue by product.",
+          "Write cleaned_sales.csv and a UTF-8 text report using pathlib."
+        ],
+        "codeExample": {
+          "caption": "Revenue calculations from main.py, lines 57–60; inline comments omitted.",
+          "content": "df[\"total_sales\"] = df[\"quantity\"] * df[\"unit_price\"]\ntotal_revenue = df[\"total_sales\"].sum()\ntotal_units = df[\"quantity\"].sum()\nsales_by_product = df.groupby(\"product\")[\"total_sales\"].sum()"
+        },
+        "demonstration": {
+          "description": "The text below is the saved report from the included generated sales records. An isolated run reproduced it exactly; the totals were also checked independently against the input.",
+          "output": {
+            "caption": "Actual saved report · generated sales dataset · currency symbol as supplied in the project",
+            "content": "SALES REPORT\n============\n\nTotal revenue: $4,005.00\nTotal units sold: 24\nDuplicate rows removed: 0\n\nRevenue by product:\nProduct             Revenue\n---------------------------\nKeyboard        $225.00\nLaptop          $3,000.00\nMonitor         $540.00\nMouse           $240.00"
+          }
+        },
+        "results": [
+          "An isolated run reproduced the saved report from the 10-row included input file: $4,005.00 total revenue, 24 units and zero duplicate rows removed.",
+          "Revenue by product in that file is Laptop $3,000.00, Monitor $540.00, Mouse $240.00 and Keyboard $225.00. These are dataset calculations, not claims of real-business impact."
+        ],
+        "limitations": [
+          "The sales dataset is generated for demonstration. Its totals do not describe a real company or establish business impact.",
+          "Required-column validation occurs after columns are accessed. An isolated missing-unit_price check raised a KeyError before the intended friendly error message.",
+          "No README, dependency manifest, automated project tests or public repository was found for this project."
+        ],
+        "nextSteps": [
+          "Document setup and the generated dataset, then expand validation before using the script with other business CSV files.",
+          "Move the required-column check before column access, then add validation tests and reproducible setup instructions. These improvements have not yet been implemented."
+        ]
+      },
+      "charts": [
+        {
+          "id": "generated-product-revenue",
+          "title": "Revenue by product in the generated dataset",
+          "type": "bar",
+          "caption": "Verified calculations for the included synthetic sales records. These values demonstrate the script and do not describe a real business.",
+          "unit": "$ (currency not specified)",
+          "source": "Included generated sales.csv; independently checked against the saved report and an isolated script run on November 9, 2026.",
+          "illustrative": false,
+          "series": [
+            {
+              "label": "Keyboard",
+              "value": 225
+            },
+            {
+              "label": "Laptop",
+              "value": 3000
+            },
+            {
+              "label": "Monitor",
+              "value": 540
+            },
+            {
+              "label": "Mouse",
+              "value": 240
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

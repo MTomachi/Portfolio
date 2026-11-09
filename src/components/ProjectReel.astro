@@ -1,0 +1,89 @@
+---
+import type { Project } from '../lib/validate-content';
+import { sitePath } from '../lib/paths';
+import ProjectPreview from './ProjectPreview.astro';
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+const number = (index: number) => String(index + 1).padStart(2, '0');
+---
+
+<div class="project-reel">
+  <nav class="project-index" aria-label="Project index">
+    <span class="index-label">Explore the work</span>
+    <div class="index-links">
+      {projects.map((project, index) => <a href={`#${project.slug}`} aria-label={`${number(index)} — ${project.title}`}><span>{number(index)}</span><span class="index-title">{project.title}</span><span class="index-arrow" aria-hidden="true">↓</span></a>)}
+    </div>
+    <span class="index-count">{String(projects.length).padStart(2, '0')} projects</span>
+  </nav>
+
+  {projects.map((project, index) => (
+    <article class="project-row" id={project.slug} aria-labelledby={`project-title-${project.slug}`}>
+      <div class="project-copy">
+        <p class="project-category"><span class="project-number">{number(index)}</span><span class="category-divider" aria-hidden="true">/</span>{project.category}</p>
+        <h3 id={`project-title-${project.slug}`}><a href={sitePath(`projects/${project.slug}/`)}>{project.title}</a></h3>
+        <p class="project-summary">{project.summary}</p>
+        <div class="project-badges">
+          {project.status === 'in-progress' && <span class="project-badge badge-progress"><span aria-hidden="true"></span>In progress</span>}
+          {project.status === 'complete' && <span class="project-badge">Complete</span>}
+          {project.status === 'unfinished' && <span class="project-badge">Unfinished · original files unavailable</span>}
+          {project.dataKind === 'synthetic' && <span class="project-badge badge-synthetic">Synthetic data</span>}
+          {project.contentDraft && <span class="project-badge">Case study draft</span>}
+        </div>
+        {project.tools.length > 0 ? <ul class="project-tools" aria-label="Project tools">{project.tools.map(tool => <li>{tool}</li>)}</ul> : <p class="tools-pending">Tools to be confirmed</p>}
+        <div class="project-actions">
+          <a class="project-action" href={sitePath(`projects/${project.slug}/`)}>View project <span aria-hidden="true">↗</span></a>
+          {project.links.github && <a class="project-code" href={project.links.github}>Source code <span aria-hidden="true">↗</span></a>}
+          {project.links.demo && <a class="project-code" href={project.links.demo}>Live demo <span aria-hidden="true">↗</span></a>}
+        </div>
+      </div>
+      <div class="project-art"><ProjectPreview project={project} /></div>
+    </article>
+  ))}
+</div>
+
+<style>
+  .project-reel { width: 100%; min-width: 0; margin-top: 2.5rem; }
+  .project-index { display: flex; align-items: center; gap: 1.8rem; padding-block: 1rem; border-block: 1px solid var(--line); }
+  .index-label, .index-count { font-size: .63rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 600; color: var(--muted); }
+  .index-label { white-space: nowrap; }
+  .index-count { margin-left: auto; white-space: nowrap; }
+  .index-links { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .index-links a { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .6rem; border-radius: .3rem; text-decoration: none; font-size: .65rem; }
+  .index-links a > span:first-child { font-size: .62rem; font-variant-numeric: tabular-nums; color: var(--muted); }
+  .index-links a:hover { background: var(--highlight); color: var(--ink); }
+  .index-arrow { font-size: .8rem; color: var(--accent); }
+  .project-row { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(2rem, 5.5vw, 6rem); min-height: 470px; padding-block: 3.5rem; border-bottom: 1px solid var(--line); scroll-margin-top: 2rem; }
+  .project-copy, .project-art { min-width: 0; }
+  .project-category { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; font-size: .64rem; text-transform: uppercase; letter-spacing: .13em; font-weight: 600; color: var(--muted); }
+  .project-number { color: var(--accent); font-variant-numeric: tabular-nums; }
+  .category-divider { color: var(--line); }
+  .project-row h3 { margin-block: 1.2rem 1.1rem; font-size: clamp(2.3rem, 3.6vw, 3.65rem); line-height: 1.05; max-width: 12ch; overflow-wrap: break-word; }
+  .project-row h3 a { text-decoration: none; }
+  .project-row h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .12em; }
+  .project-summary { max-width: 47ch; color: var(--muted); font-size: .88rem; line-height: 1.75; }
+  .project-badges { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+  .project-badges:empty { display: none; }
+  .project-badge { display: inline-flex; align-items: center; gap: .35rem; border: 1px solid var(--line); color: var(--muted); border-radius: 4px; padding: .2rem .5rem; font-size: .59rem; line-height: 1.5; letter-spacing: .01em; }
+  .badge-synthetic { color: var(--accent); background: var(--highlight); border-color: transparent; }
+  .badge-progress > span { width: 5px; height: 5px; background: currentColor; border-radius: 50%; }
+  .project-tools { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 1.15rem 0 0; padding: 0; font-size: .64rem; color: var(--muted); }
+  .project-tools li + li::before { content: '·'; margin-right: 1rem; color: var(--muted); }
+  .tools-pending { margin-top: 1.1rem; font-size: .66rem; color: var(--muted); }
+  .project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.4rem; margin-top: 1.6rem; }
+  .project-action { display: inline-flex; align-items: center; gap: 1.3rem; border: 1px solid var(--ink); border-radius: 5px; padding: .55rem .85rem; font-size: .71rem; font-weight: 600; text-decoration: none; }
+  .project-action:hover { color: var(--bg); background: var(--ink); }
+  .project-action > span { font-size: .95rem; }
+  .project-code { font-size: .68rem; font-weight: 550; text-decoration-color: var(--line); }
+  .project-code:hover { text-decoration-color: currentColor; }
+  .project-category { font-size: .7rem; }
+  .project-badge, .project-tools, .tools-pending { font-size: .75rem; }
+  .project-action, .project-code { font-size: .8rem; }
+  .project-action { min-height: 44px; }
+  @media (max-width: 1100px) { .index-title { display: none; } .project-index { gap: 1rem; } .project-row { gap: 2.2rem; } }
+  @media (max-width: 760px) { .project-reel { margin-top: 1.8rem; } .project-index { gap: .7rem; flex-wrap: wrap; } .index-label { font-size: .58rem; } .index-count { font-size: .58rem; } .index-links { gap: .15rem; } .index-links a { min-width: 36px; min-height: 36px; justify-content: center; padding: .35rem .45rem; } .index-arrow { display: none; } .project-row { grid-template-columns: minmax(0, 1fr); min-height: auto; padding-block: 2.5rem; gap: 1.8rem; } .project-row h3 { font-size: clamp(2.5rem, 8vw, 3.3rem); max-width: 16ch; margin-block: .9rem; } .project-summary { font-size: .9rem; max-width: 55ch; } .project-actions { margin-top: 1.3rem; } .project-art { width: 100%; } }
+  @media (max-width: 360px) { .project-index { gap: .35rem; } .index-label { width: 100%; } .index-count { margin-left: auto; } .project-row h3 { font-size: 2.3rem; } }
+</style>

@@ -1,0 +1,75 @@
+---
+import { portfolio } from '../lib/validate-content';
+import { resourcePath, sitePath } from '../lib/paths';
+import '../styles/global.css';
+interface Props { title: string; description?: string; noIndex?: boolean; }
+const { title, description = portfolio.profile.description, noIndex = false } = Astro.props;
+const canonical = Astro.site && !noIndex ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const isDraft = portfolio.profile.nameIsPlaceholder || portfolio.projects.some(project => project.contentDraft);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    {noIndex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#f6f5f0" />
+    <script is:inline>
+      // Apply saved preferences before the page paints. System defaults work in CSS.
+      try {
+        const saved = localStorage.getItem('portfolio-preferences-v1');
+        if (saved && saved.length <= 200) {
+          const value = JSON.parse(saved);
+          if (value && ['system', 'light', 'dark'].includes(value.theme) && typeof value.lessMotion === 'boolean') {
+            if (value.theme !== 'system') document.documentElement.dataset.theme = value.theme;
+            if (value.lessMotion) document.documentElement.dataset.lessMotion = 'true';
+          }
+        }
+      } catch { /* Storage can be blocked; CSS still follows the device. */ }
+    </script>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href={sitePath('favicon.svg')} type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+      <a class="brand" href={sitePath()}>{portfolio.profile.name}<span aria-hidden="true"> ↗</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href={sitePath('#projects')}>Projects</a>
+        <a href={sitePath('#skills')}>Skills</a>
+        <a href={sitePath('#about')}>About</a>
+        <a href={sitePath('#contact')}>Contact</a>
+        {portfolio.contact.resume && <a href={resourcePath(portfolio.contact.resume)}>Résumé (PDF)</a>}
+      </nav>
+    </header>
+    <div class="preferences shell" data-preferences hidden>
+      <label class="theme-control" for="theme">Theme
+        <select id="theme" name="theme">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+      <label class="motion-control" for="less-motion">
+        <input id="less-motion" type="checkbox" aria-describedby="motion-hint" />
+        Less motion
+      </label>
+      <span class="preference-hint" id="motion-hint" hidden>Your device requests less motion.</span>
+      <span class="sr-only" role="status" data-preference-status></span>
+    </div>
+    {isDraft && <div class="shell draft-note">Portfolio draft · project details are being documented. {portfolio.profile.nameIsPlaceholder && 'Public name to be added.'}</div>}
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="footer shell">
+      <span>© {new Date().getFullYear()} {portfolio.profile.name} · Learning in public.</span>
+      <span>Mount Royal University · CS → Data Science</span>
+    </footer>
+    <script>
+      import '../scripts/preferences';
+    </script>
+  </body>
+</html>
