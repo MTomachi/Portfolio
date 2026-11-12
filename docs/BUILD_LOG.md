@@ -54,6 +54,16 @@ Uploaded all 46 reviewed source files atomically to main in `969d0f070b37e3e3c4e
 
 The automatic Check portfolio run `42673917267` failed before any jobs started. Its annotation reports an internal server error (correlation f9581592-4c7e-4a30-9d49-60192e64907e); GitHub refused the failed-job retry with HTTP 403. The owner reported starting the publishing workflow, but no workflow_dispatch run was visible in subsequent API reads. GitHub's live summary API reported a major Actions outage and an investigating Actions and Checks API incident. This is an external service blocker, not a reported application-test failure. Current progress and resumption instructions are in RELEASE_STATUS.md.
 
+## Revised Phase 5 — Published and verified, November 10, 2026
+
+The owner submitted manual publishing run `42863579059` for deployed source `fea59b96e0e24f5dceb936ee5d57e4da69e12f4e`. Both build and deploy succeeded. The actual Pages prefix was `/Portfolio/`. Remote verification passed zero Astro diagnostics, all 16 content tests, all 30 Chromium browser tests, fourth-record/duplicate-slug checks, and five pages/100 local references. Deployment returned `https://mtomachi.github.io/Portfolio/`.
+
+Live Brave checks passed direct home/all three case-study URLs and refresh, canonicals, CSS/favicon/screenshot responses, screenshot/full-size access, keyboard skip/theme/motion controls, preference persistence, OS reduced motion, 390px layouts and all routes without JavaScript. No browser/network errors occurred. Captured and visually inspected the live desktop/light and phone-width/dark homepage; confirmed its lazy-loaded screenshot appears when scrolled into view. Evidence is in ignored `artifacts/public-verification.json` and public captures. Physical phones, Safari, Firefox, screen readers and timed employer comprehension remain untested.
+
+Updated the release, deployment and editing handoff references. All five phases are complete for the approved, clearly marked draft. The résumé and owner content improvements can follow in a separately reviewed release; music remains unfinished and CSV remains in progress with generated data. No paid services or domain purchase were used. Website code/assets were unchanged during publishing verification.
+
+Check: open the live URL, use View project, refresh a case study, change Theme and enable Less motion. Follow README/EDITING.md for local changes and DEPLOYMENT.md for checks, future release approval, manual publishing and rollback.
+
 ## Historical work under the earlier plan
 
 ## Authorization

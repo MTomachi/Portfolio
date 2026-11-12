@@ -2,9 +2,11 @@
 
 An approved draft portfolio for a Mount Royal University student moving from Computer Science toward Data Science. Built with Astro, TypeScript, plain CSS and a small preferences script. Core content works without JavaScript.
 
-**Repository:** https://github.com/MTomachi/Portfolio  
-**Intended Pages URL:** https://mtomachi.github.io/Portfolio/ — deployment pending; see [release status](docs/RELEASE_STATUS.md).  
-**Release gate:** David approved the reviewed draft on November 9, 2026, and its source is on `main`. Remote checks/deployment are waiting on GitHub Actions recovery. Future releases still need approval. The deployment workflow remains manual-only and defaults to approval=false.
+**Repository:** https://github.com/MTomachi/Portfolio
+
+**Live website:** https://mtomachi.github.io/Portfolio/ — verified November 10, 2026; see [release status](docs/RELEASE_STATUS.md).
+
+**Release gate:** David approved this reviewed draft on November 9, 2026. Its build, deployment and public checks passed. Future releases still need approval. The deployment workflow remains manual-only and defaults to approval=false.
 
 ## Run
 
@@ -26,7 +28,7 @@ npm run test:browser
 npm run verify:release
 ```
 
-Build includes Astro/TypeScript checks and content validation tests. Browser checks use Brave on this laptop. Elsewhere, install a Playwright browser with `npx playwright install chromium`, or set `PLAYWRIGHT_CHROMIUM_EXECUTABLE` to a compatible executable. GitHub Actions installs its own Chromium; remote checks have not been run yet.
+Build includes Astro/TypeScript checks and content validation tests. Browser checks use Brave on this laptop. Elsewhere, install a Playwright browser with `npx playwright install chromium`, or set `PLAYWRIGHT_CHROMIUM_EXECUTABLE` to a compatible executable. GitHub Actions installs its own Chromium. The publishing run passed zero Astro diagnostics, 16 content tests, 30 browser tests, content-edit checks and 100 local references. Live routes, assets, preferences, keyboard access and JavaScript-off content were also checked.
 
 `verify:release` checks generated pages, local links, anchors and assets. It reports draft content and does not publish anything. `verify:content-edit` uses an isolated temporary copy to prove a fourth project creates a homepage entry and detail page, and duplicate slugs fail the actual build.
 

@@ -6,9 +6,9 @@ Repository: [MTomachi/Portfolio](https://github.com/MTomachi/Portfolio), branch 
 
 Environment variables `SITE_URL` and `BASE_PATH` override these defaults for checks or a later domain. Page/asset links use a single helper, so content paths never contain the repository prefix.
 
-The local checkout is connected to this repository. The approved draft source was uploaded in commit `969d0f070b37e3e3c4e67b8b6b7aae3dda8d6758`. Deployment has not been verified; current progress is in [RELEASE_STATUS.md](RELEASE_STATUS.md). The connected GitHub tools cannot administer Pages settings or dispatch a workflow; no claim is made that the remote Pages source has been changed.
+The local checkout is connected to this repository. The approved draft source was uploaded in commit `969d0f070b37e3e3c4e67b8b6b7aae3dda8d6758`; revision `fea59b96e0e24f5dceb936ee5d57e4da69e12f4e` deployed successfully on November 10, 2026. The public URL and all project routes were verified; see [RELEASE_STATUS.md](RELEASE_STATUS.md). The connected GitHub tools can inspect runs but cannot administer Pages settings or dispatch a workflow, so the owner submits the manual publishing form.
 
-## Before the first approved release
+## Publish an approved release
 
 1. Review the local site and [release review](RELEASE_REVIEW.md).
 2. Run the required checks and obtain David's explicit approval of that release.
@@ -30,7 +30,7 @@ npm run test:browser
 npm run verify:release
 ```
 
-The deployment workflow reads Pages metadata and uses its origin/base path for the same build and browser checks. The runner installs Chromium; local verification used Brave on Fedora. Remote CI and deployed behavior remain unverified until an approved release actually runs.
+The deployment workflow reads Pages metadata and uses its origin/base path for the same build and browser checks. The runner installs Chromium; local verification used Brave on Fedora. The first approved release passed remote CI and public browser checks on November 10, 2026. Repeat the required checks for each later release; the earlier pass does not validate future changes.
 
 After deployment, open the home and all three detail URLs directly, refresh them, check the screenshot/full-size link, navigate by keyboard, try theme/motion settings, and check on a phone. A valid local build does not prove the remote site is live.
 

@@ -1,6 +1,6 @@
-# Release review — approved draft; deployment pending
+# Release review — approved and published draft
 
-Prepared and explicitly approved by David on November 9, 2026. **Draft approved for publication; deployment not yet verified.** Repository: [MTomachi/Portfolio](https://github.com/MTomachi/Portfolio), branch `main`. Intended URL: `https://mtomachi.github.io/Portfolio/`.
+Prepared and explicitly approved by David on November 9, 2026. **Draft published and verified November 10, 2026.** Repository: [MTomachi/Portfolio](https://github.com/MTomachi/Portfolio), branch `main`. [Live website](https://mtomachi.github.io/Portfolio/); [successful publishing run](https://github.com/MTomachi/Portfolio/actions/runs/42863579059).
 
 ## What is ready
 
@@ -24,7 +24,7 @@ Prepared and explicitly approved by David on November 9, 2026. **Draft approved 
 
 Browser checks cover project evidence/navigation, real screenshot loading, chart geometry/data correspondence, 320/390/768/1440px layouts, 200% text in a short viewport, keyboard focus, themes, system reduced motion, blocked/invalid storage, JavaScript off, blocked images, 404 navigation and browser errors/resources.
 
-Local browser was Brave on Fedora. GitHub Actions, deployed URLs, physical phones, screen readers, Safari and Firefox have not been validated. No performance score is claimed; the complete static output is about 377 KiB before compression, not a measured page-transfer size.
+Local browser was Brave on Fedora. The publishing run also passed 16 content tests, 30 Chromium browser tests, content-edit checks and 100 local references at `/Portfolio/`. Public routes/refresh, assets, preferences, keyboard navigation, reduced motion, phone-width layouts and JavaScript-off content passed live Brave checks. Physical phones, screen readers, Safari and Firefox have not been validated. No performance score is claimed; the complete static output is about 377 KiB before compression, not a measured page-transfer size.
 
 ## Content limits included in this candidate
 
@@ -43,8 +43,8 @@ npm run dev
 
 Open the printed `/Portfolio/` URL. Inspect the homepage, all three case studies and contact details, then stop with Ctrl+C. Screenshots provide a static visual review; the running site is needed to check interactions.
 
-## Approval and remaining release steps
+## Completed release and future changes
 
-David has explicitly approved this reviewed draft, and its source is on main (`969d0f0`). GitHub's initial check failed before any jobs started with an internal server error. Its live status API reported an Actions outage; see [release status](RELEASE_STATUS.md). No remote test or deployment pass is claimed. The connected tools cannot administer Pages settings or dispatch a workflow; the owner must select **Settings → Pages → Source: GitHub Actions** and use the manual release workflow once the approved source is uploaded. The assistant can then monitor checks, deployment logs and the resulting site.
+David explicitly approved this reviewed draft. The manual publishing run deployed `fea59b9` successfully, with the same application code/assets first uploaded in `969d0f0`. The returned public URL and all three project routes were verified; [release status](RELEASE_STATUS.md) records the evidence and earlier GitHub interruption. Phase 5 is complete for this approved draft.
 
-After approval, upload the reviewed source, run checks and the manual deployment workflow, and verify its returned public URL plus direct project links. Phase 5 is not complete until that public verification succeeds. Domain purchases and paid services are not authorized.
+For future changes, edit locally, repeat checks, obtain approval of the next release, then submit the manual publishing workflow and verify the resulting public URLs. Domain purchases and paid services remain unauthorized.
